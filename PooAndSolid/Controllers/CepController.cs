@@ -1,27 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using PooAndSolid.Adapter;
+﻿using PooAndSolid.Adapter;
 using PooAndSolid.Configuracao;
 using PooAndSolid.Domain.Response;
-using PooAndSolid.Integration;
 using PooAndSolid.Service;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace PooAndSolid.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class CepController : ControllerBase
     {
-        readonly ValidaEnderecoService validaEnderecoService = null;
-        readonly ConfiguracaoCliente configuracaoCliente = null;
+        private readonly ValidaEnderecoService validaEnderecoService;
 
-        public WeatherForecastController()
+        public CepController()
         {
-            configuracaoCliente = new ConfiguracaoClienteImp(new AdapterViaCep(), new AdapterWsApiCep());
+            ConfiguracaoCliente configuracaoCliente = new ConfiguracaoClienteImp(new AdapterViaCep(), new AdapterWsApiCep());
             validaEnderecoService = new ValidaEnderecoServiceImp(configuracaoCliente);
         }
 

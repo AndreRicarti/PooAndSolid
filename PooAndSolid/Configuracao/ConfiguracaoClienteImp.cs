@@ -6,8 +6,8 @@ namespace PooAndSolid.Configuracao
 {
     public class ConfiguracaoClienteImp : ConfiguracaoCliente
     {
-        private AdapterCep<ResponseViaCep> adapterViaCep = null;
-        private AdapterCep<ResponseWsApiCep> adapterWsApiCep = null;
+        private readonly AdapterCep<ResponseViaCep> adapterViaCep;
+        private readonly AdapterCep<ResponseWsApiCep> adapterWsApiCep;
 
         public ConfiguracaoClienteImp(AdapterCep<ResponseViaCep> adapterViaCep, AdapterCep<ResponseWsApiCep> adapterWsApiCep)
         {

@@ -5,11 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <Compile Remove="Domain\Request\**" />
+    <Content Remove="Domain\Request\**" />
+    <EmbeddedResource Remove="Domain\Request\**" />
+    <None Remove="Domain\Request\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\Request\" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
 
