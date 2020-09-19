@@ -10,11 +10,11 @@ namespace PooAndSolid.Controllers
     [Route("[controller]")]
     public class CepController : ControllerBase
     {
-        private readonly ValidaEnderecoService validaEnderecoService;
+        private readonly IValidaEnderecoService validaEnderecoService;
 
         public CepController()
         {
-            ConfiguracaoCliente configuracaoCliente = new ConfiguracaoClienteImp(new AdapterViaCep(), new AdapterWsApiCep());
+            IConfiguracaoCliente configuracaoCliente = new ConfiguracaoClienteImp(new AdapterViaCep(), new AdapterWsApiCep());
             validaEnderecoService = new ValidaEnderecoServiceImp(configuracaoCliente);
         }
 

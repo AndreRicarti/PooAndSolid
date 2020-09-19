@@ -4,20 +4,20 @@ using PooAndSolid.Integration;
 
 namespace PooAndSolid.Configuracao
 {
-    public class ConfiguracaoClienteImp : ConfiguracaoCliente
+    public class ConfiguracaoClienteImp : IConfiguracaoCliente
     {
-        private readonly AdapterCep<ResponseViaCep> adapterViaCep;
-        private readonly AdapterCep<ResponseWsApiCep> adapterWsApiCep;
+        private readonly IAdapterCep<ResponseViaCep> adapterViaCep;
+        private readonly IAdapterCep<ResponseWsApiCep> adapterWsApiCep;
 
-        public ConfiguracaoClienteImp(AdapterCep<ResponseViaCep> adapterViaCep, AdapterCep<ResponseWsApiCep> adapterWsApiCep)
+        public ConfiguracaoClienteImp(IAdapterCep<ResponseViaCep> adapterViaCep, IAdapterCep<ResponseWsApiCep> adapterWsApiCep)
         {
             this.adapterViaCep = adapterViaCep;
             this.adapterWsApiCep = adapterWsApiCep;
         }
 
-        public CepClientIntegration getConfig(string cep, int token)
+        public ICepClientIntegration getConfig(string cep, int token)
         {
-            CepClientIntegration cepClientIntegration;
+            ICepClientIntegration cepClientIntegration;
 
             if (token < 5)
             {

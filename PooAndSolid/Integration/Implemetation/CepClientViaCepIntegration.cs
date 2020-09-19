@@ -7,16 +7,16 @@ using System.Net;
 
 namespace PooAndSolid.Integration
 {
-    public class CepClientViaCepIntegration : CepClientIntegration
+    public class CepClientViaCepIntegration : ICepClientIntegration
     {
-        private AdapterCep<ResponseViaCep> adapterCep;
+        private IAdapterCep<ResponseViaCep> adapterCep;
 
-        public CepClientViaCepIntegration(AdapterCep<ResponseViaCep> adapterCep)
+        public CepClientViaCepIntegration(IAdapterCep<ResponseViaCep> adapterCep)
         {
             this.adapterCep = adapterCep;
         }
 
-        public ResponseCepKleberProfessor GetCep(string cep)
+        public ResponsePooAndSolid GetCep(string cep)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"https://viacep.com.br/ws/{cep}/json/");
             request.Method = "GET";

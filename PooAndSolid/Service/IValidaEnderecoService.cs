@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PooAndSolid.Service
 {
-    interface ValidaEnderecoService
+    interface IValidaEnderecoService
     {
         ResponseRealizaEntrega RealizaEntrega(string cep, int token);
     }

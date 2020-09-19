@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace PooAndSolid.Adapter
 {
-    public class AdapterWsApiCep : AdapterCep<ResponseWsApiCep>
+    public class AdapterWsApiCep : IAdapterCep<ResponseWsApiCep>
     {
-        public ResponseCepKleberProfessor Convert(ResponseWsApiCep t)
+        public ResponsePooAndSolid Convert(ResponseWsApiCep t)
         {
-            return new ResponseCepKleberProfessor
+            return new ResponsePooAndSolid
             {
                 Logradouro = t.Address,
                 Uf = t.State

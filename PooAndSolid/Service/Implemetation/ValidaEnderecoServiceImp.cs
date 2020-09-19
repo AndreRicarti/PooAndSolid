@@ -6,20 +6,20 @@ using System;
 using System.Collections.Generic;
 namespace PooAndSolid.Service
 {
-    public class ValidaEnderecoServiceImp : ValidaEnderecoService
+    public class ValidaEnderecoServiceImp : IValidaEnderecoService
     {
-        private readonly ConfiguracaoCliente configuracaoCliente = null;
+        private readonly IConfiguracaoCliente configuracaoCliente = null;
 
-        public ValidaEnderecoServiceImp(ConfiguracaoCliente configuracaoCliente)
+        public ValidaEnderecoServiceImp(IConfiguracaoCliente configuracaoCliente)
         {
             this.configuracaoCliente = configuracaoCliente;
         }
 
         public ResponseRealizaEntrega RealizaEntrega(string cep, int token)
         {
-            CepClientIntegration cepClientIntegration = configuracaoCliente.getConfig(cep, token);
+            ICepClientIntegration cepClientIntegration = configuracaoCliente.getConfig(cep, token);
 
-            ResponseCepKleberProfessor responseCepKleberProfessor = cepClientIntegration.GetCep(cep);
+            ResponsePooAndSolid responseCepKleberProfessor = cepClientIntegration.GetCep(cep);
 
             ResponseRealizaEntrega realizaEntrega = new ResponseRealizaEntrega
             {
