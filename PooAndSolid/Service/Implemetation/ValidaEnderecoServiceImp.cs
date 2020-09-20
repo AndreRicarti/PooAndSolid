@@ -1,6 +1,8 @@
 ﻿using PooAndSolid.Configuracao;
 using PooAndSolid.Domain.DTO;
 using PooAndSolid.Domain.Response;
+using PooAndSolid.Factory;
+using PooAndSolid.Factory.Implementation;
 using PooAndSolid.Integration;
 using System;
 using System.Collections.Generic;
@@ -8,33 +10,35 @@ namespace PooAndSolid.Service
 {
     public class ValidaEnderecoServiceImp : IValidaEnderecoService
     {
-        private readonly IConfiguracaoCliente configuracaoCliente = null;
+        //private readonly IFactoryConfiguracao factoryConfiguracao;
 
-        public ValidaEnderecoServiceImp(IConfiguracaoCliente configuracaoCliente)
+        public ValidaEnderecoServiceImp(IFactoryConfiguracao configuracaoCliente)
         {
-            this.configuracaoCliente = configuracaoCliente;
+            //this.factoryConfiguracao = configuracaoCliente;
         }
 
         public ResponseRealizaEntrega RealizaEntrega(string cep, int token)
         {
-            ICepClientIntegration cepClientIntegration = configuracaoCliente.getConfig(cep, token);
+            //ICepClientIntegration cepClientIntegration = factoryConfiguracao.Build(token).GetConfig(cep);
 
-            ResponsePooAndSolid responseCepKleberProfessor = cepClientIntegration.GetCep(cep);
+            //ResponsePooAndSolid responsePooAndSolid = cepClientIntegration.GetCep(cep);
 
-            ResponseRealizaEntrega realizaEntrega = new ResponseRealizaEntrega
-            {
-                Endereco = responseCepKleberProfessor.Logradouro,
-                RealizaEntrega = false,
-                WilderLindao = true
-            };
+            //ResponseRealizaEntrega realizaEntrega = new ResponseRealizaEntrega
+            //{
+            //    Endereco = responsePooAndSolid.Logradouro,
+            //    RealizaEntrega = false,
+            //    WilderLindao = true
+            //};
 
-            if (responseCepKleberProfessor.Uf.Equals("SP") || responseCepKleberProfessor.Uf.Equals("RJ")
-                || responseCepKleberProfessor.Uf.Equals("GO"))
-            {
-                realizaEntrega.RealizaEntrega = true;
-            }
+            //if (responsePooAndSolid.Uf.Equals("SP") || responsePooAndSolid.Uf.Equals("RJ")
+            //    || responsePooAndSolid.Uf.Equals("GO"))
+            //{
+            //    realizaEntrega.RealizaEntrega = true;
+            //}
 
-            return realizaEntrega;
+            //return realizaEntrega;
+
+            return null;
         }
     }
 }

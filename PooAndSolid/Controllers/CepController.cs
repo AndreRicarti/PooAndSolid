@@ -3,6 +3,7 @@ using PooAndSolid.Configuracao;
 using PooAndSolid.Domain.Response;
 using PooAndSolid.Service;
 using Microsoft.AspNetCore.Mvc;
+using PooAndSolid.Factory;
 
 namespace PooAndSolid.Controllers
 {
@@ -12,10 +13,9 @@ namespace PooAndSolid.Controllers
     {
         private readonly IValidaEnderecoService validaEnderecoService;
 
-        public CepController()
+        public CepController(IValidaEnderecoService validaEnderecoService)
         {
-            IConfiguracaoCliente configuracaoCliente = new ConfiguracaoClienteImp(new AdapterViaCep(), new AdapterWsApiCep());
-            validaEnderecoService = new ValidaEnderecoServiceImp(configuracaoCliente);
+            this.validaEnderecoService = validaEnderecoService;
         }
 
         [HttpGet]
