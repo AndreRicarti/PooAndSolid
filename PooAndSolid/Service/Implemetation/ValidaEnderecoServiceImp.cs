@@ -10,35 +10,33 @@ namespace PooAndSolid.Service
 {
     public class ValidaEnderecoServiceImp : IValidaEnderecoService
     {
-        //private readonly IFactoryConfiguracao factoryConfiguracao;
+        private readonly IFactoryConfiguracao factoryConfiguracao;
 
         public ValidaEnderecoServiceImp(IFactoryConfiguracao configuracaoCliente)
         {
-            //this.factoryConfiguracao = configuracaoCliente;
+            this.factoryConfiguracao = configuracaoCliente;
         }
 
         public ResponseRealizaEntrega RealizaEntrega(string cep, int token)
         {
-            //ICepClientIntegration cepClientIntegration = factoryConfiguracao.Build(token).GetConfig(cep);
+            ICepClientIntegration cepClientIntegration = factoryConfiguracao.Build(token).GetConfig(cep);
 
-            //ResponsePooAndSolid responsePooAndSolid = cepClientIntegration.GetCep(cep);
+            ResponsePooAndSolid responsePooAndSolid = cepClientIntegration.GetCep(cep);
 
-            //ResponseRealizaEntrega realizaEntrega = new ResponseRealizaEntrega
-            //{
-            //    Endereco = responsePooAndSolid.Logradouro,
-            //    RealizaEntrega = false,
-            //    WilderLindao = true
-            //};
+            ResponseRealizaEntrega realizaEntrega = new ResponseRealizaEntrega
+            {
+                Endereco = responsePooAndSolid.Logradouro,
+                RealizaEntrega = false,
+                WilderLindao = true
+            };
 
-            //if (responsePooAndSolid.Uf.Equals("SP") || responsePooAndSolid.Uf.Equals("RJ")
-            //    || responsePooAndSolid.Uf.Equals("GO"))
-            //{
-            //    realizaEntrega.RealizaEntrega = true;
-            //}
+            if (responsePooAndSolid.Uf.Equals("SP") || responsePooAndSolid.Uf.Equals("RJ")
+                || responsePooAndSolid.Uf.Equals("GO"))
+            {
+                realizaEntrega.RealizaEntrega = true;
+            }
 
-            //return realizaEntrega;
-
-            return null;
+            return realizaEntrega;
         }
     }
 }

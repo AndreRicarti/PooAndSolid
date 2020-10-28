@@ -9,15 +9,11 @@ namespace PooAndSolid.Factory.Implementation
     {
         public IConfiguracaoCliente Build(int token)
         {
-            //switch (token)
-            //{
-            //    case int n when (n <= 5):
-            //        return new ConfiguracaoClienteViaCepImp(new AdapterViaCep());
-            //    default:
-            //        return new ConfiguracaoClienteWsApiCepImp(new AdapterWsApiCep());
-            //}
-
-            return null;
+            return token switch
+            {
+                int n when (n <= 5) => new ConfiguracaoClienteViaCepImp(new AdapterViaCep()),
+                _ => new ConfiguracaoClienteWsApiCepImp(new AdapterWsApiCep()),
+            };
         }
     }
 }
